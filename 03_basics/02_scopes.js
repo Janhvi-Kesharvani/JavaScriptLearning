@@ -33,4 +33,33 @@ function one() {
     
 }
 
-one()
+// one()
+
+if (true) {
+    const username = "Ram";
+    if (username == "Ram") {
+        const website = "google";
+        // console.log(username + website);
+    }
+    // console.log(website); // not accessible
+}
+
+// console.log(username); // not accessible
+
+
+// ************ interesting example ******************
+
+// console.log(addOne(5));
+
+function addOne (num) {
+    return num +1
+}
+
+// -- It is not possible to console before function call in this method -- it is called hosting
+console.log(addTwo(5));
+
+const addTwo = function (num) {
+    return num +2
+}
+
+
