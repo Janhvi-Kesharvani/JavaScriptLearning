@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+        .card {
+            display: grid;
+        }
+        .image {
+            width: 400px !important;
+            height: 500px;
+        }
+    </style>
+  </head>
+  <body style="background-color: #212121; color : #fff">
+    <div class="card">
+        <img class="image" src="..\images\girl.jpg" alt="Girl Image" style="width:100%">
+        <div class="container">
+            <h4 id="login"></h4>
+            <h5 id="loginId"></h5>
+        </div>
+    </div>
+  </body>
+  <script>
+    const requestUrl = 'https://api.github.com/users/Janhvi-Kesharvani';
+    const xhr = new XMLHttpRequest();
+    xhr.open('GET', requestUrl);
+    xhr.onreadystatechange = function() {
+        // console.log(xhr.readyState);
+        const data = JSON.parse(this.responseText)
+        console.log(data);
+
+        const login = document.getElementById('login');
+        const loginID = document.getElementById('loginId');
+        const image = document.querySelector('.image');
+
+        image.addEventListener('click', function() {
+            login.innerHTML = data.login;
+            loginID.innerHTML = data.id;
+        })
+        
+        // if (xhr.readyState === 4) {
+        //     const data = JSON.parse(this.responseText);
+        //     console.log(typeof data );
+        //     console.log(data.followers);
+        // }
+    }
+    xhr.send();
+  </script>
+</html>
